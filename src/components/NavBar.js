@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import CartWidget from './CartWidget'
 
 const NavBar = () => {
   return (
@@ -46,9 +47,7 @@ const NavBar = () => {
             </div>
             <div className="col-lg-3 col-6 text-right">
                 <a className="btn border">
-                    <i id="botonCarrito" className="fas fa-shopping-cart text-primary"></i>
-                    <FontAwesomeIcon icon={faShoppingCart}/>
-                    <span id="carritoTotal" className="badge"></span>
+                <CartWidget/> 
                 </a>
                 <a className="btn border">
                     <FontAwesomeIcon icon={faTrash}/>
