@@ -1,9 +1,10 @@
 import React from 'react'
+import ItemList from './ItemList';
 
 const ItemListContainer = () => {
   return (
-    <div>
-        <h3>Bienvenido!!!</h3>
+    <div style={{display: "flex", direction: "row"}}>
+      <ItemList />
     </div>
   )
 }
