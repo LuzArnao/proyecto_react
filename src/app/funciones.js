@@ -1,0 +1,1 @@
+export const getProducts = () => fetch('/productos.json').then(res => res.json());

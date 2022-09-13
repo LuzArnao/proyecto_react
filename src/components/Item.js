@@ -1,9 +1,9 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faEye } from '@fortawesome/free-solid-svg-icons'
-import ItemCount from './ItemCount'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
-const Item = ( { id, imagen, nombre, precio, precioDescuento, stockTotal } ) => {
+const Item = ( { id, imagen, nombre, precio, precioDescuento } ) => {
 
     function formatNumber(valor) {
         return valor.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -19,10 +19,11 @@ const Item = ( { id, imagen, nombre, precio, precioDescuento, stockTotal } ) => 
             <div className='card-body border-left border-right text-center p-0 pt-4 pb-3'>
                 <h6 className='text-truncate mb-3'>{nombre}</h6>
                 <div className='d-flex justify-content-center'>
-                    <h6>{formatNumber(precioDescuento)} $</h6><h6 className='text-muted ml-2'> - <del>{formatNumber(precio)} $</del></h6>
+                    <h6><del>${formatNumber(precio)}</del> - ${formatNumber(precioDescuento)}</h6><h6 className='text-muted ml-2'></h6>
                 </div>
             </div>
-                <ItemCount stock={stockTotal} initial='1'/>
+            <a style={{height:55}} id={id} className='btn btn-sm text-dark p-0 border-left border-right border-bottom '><div className="text-primary" style={{paddingRight: 5}}><Link to={`/item/${id}`}><FontAwesomeIcon icon={faEye}/></Link></div><Link to={`/item/${id}`}>Ver Detalle</Link></a>
+            
         </div>   
     </div>
     

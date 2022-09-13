@@ -1,14 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app/style.css';
 import './app/style.min.css';
-import Router from './app/Router';
+import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
     <div className="App">
-      <Router/>
+      <NavBar/>
+      <ItemListContainer/>
+      <ItemDetailContainer/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
