@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Item from './Item';
-import { getProducts } from "../app/funciones";
+import { getProducts } from "../app/Funciones";
 
 
 const ItemList = () => {
@@ -19,7 +19,7 @@ const ItemList = () => {
     
     productos.map(producto => 
 
-       <Item key={producto.id} id={producto.id} imagen={producto.imagen} nombre={producto.nombre} precio={producto.precio} precioDescuento={producto.precio*descuento}/>  
+       <Item key={producto.id} producto={producto} descuento={descuento}/>  
 
     )
   

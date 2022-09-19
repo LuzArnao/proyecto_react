@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
-import { getProducts } from '../app/funciones';
+import { getProducts } from '../app/Funciones';
 
 const ItemDetailContainer = ( { id } ) => {
   const descuento = 0.80
@@ -16,9 +16,9 @@ const ItemDetailContainer = ( { id } ) => {
 
   return (
     
-    productos.filter(producto => producto.id == id ).map(pFiltro => (
+    productos.filter(producto => producto.id == id).map(productoFiltrado => (
 
-       <ItemDetail key={pFiltro.id} id={pFiltro.id} imagen={pFiltro.imagen} nombre={pFiltro.nombre} precio={pFiltro.precio} precioDescuento={pFiltro.precio*descuento} stockTotal={pFiltro.tallas[0]["S"] + pFiltro.tallas[1]["M"] + pFiltro.tallas[2]["L"]} />  
+       <ItemDetail key={productoFiltrado.id} producto={productoFiltrado} descuento={descuento} />  
 
     )
   

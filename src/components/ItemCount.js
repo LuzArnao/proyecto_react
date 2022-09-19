@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-const ItemCount = ( { stock, initial } ) => {
+const ItemCount = ( { stock, initial, onAdd } ) => {
     const [contador, setContador] = useState(initial)
   return (
-    <div>
+
+    <div className="d-flex align-items-center">
+
+    <div className="input-group quantity mr-3" style={{width: 180, marginRight: 10}}>
         
         <div className=' d-flex justify-content-between bg-light'>
             
@@ -18,7 +21,7 @@ const ItemCount = ( { stock, initial } ) => {
                         }
                     }><FontAwesomeIcon icon={faMinus}/></button>
                 </span>
-                <p className='form-control input-number'>{contador}</p>
+                <p id="cantidadElementos" className='form-control input-number'>{contador}</p>
                 <span className='input-group-btn'>
                     <button type='button' className='btn btn-primary btn-plus' onClick={() => 
                         {
@@ -36,7 +39,8 @@ const ItemCount = ( { stock, initial } ) => {
         </div>
 
     </div>
-
+        <button className="btn btn-primary px-3" onClick={onAdd}><FontAwesomeIcon icon={faShoppingCart} /> Agregar al Carrito</button>
+    </div>
   )
 }
 
