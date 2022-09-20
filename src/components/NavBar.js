@@ -1,10 +1,13 @@
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import CartWidget from './CartWidget'
 import { Link } from 'react-router-dom' 
+import { AppContext } from '../app/CartContext' 
 
 const NavBar = () => {
+    const { items, addItem, removeItem, clear } = useContext(AppContext);
   return (
     <div className="container-fluid">
         <div className="row bg-secondary py-2 px-xl-5">
@@ -48,7 +51,7 @@ const NavBar = () => {
                 <a className="btn border">
                 <CartWidget/> 
                 </a>
-                <a className="btn border">
+                <a className="btn border" onClick={clear}>
                     <FontAwesomeIcon icon={faTrash}/>
                 </a>
             </div>

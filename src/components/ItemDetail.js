@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faStarHalf, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
+import { AppContext } from '../app/CartContext' 
 
 const ItemDetail = ( { producto, descuento } ) => {
     
-    const [count, setCount] = useState(0);
-
+    const { items, addItem, removeItem, clear, isInCart } = useContext(AppContext);
+    const [count,setCount] = useState(0);
     const cantidadElementos = document.getElementById('cantidadElementos');
 
     function formatNumber(valor) {
@@ -87,18 +88,23 @@ const ItemDetail = ( { producto, descuento } ) => {
                     </form>
                 </div>
                 {
+
                     
-                    count === 0 ? 
-                
+                    isInCart(producto.id) < 1 ?
+                    
                     <ItemCount stock={producto.tallas[0]["S"] + producto.tallas[1]["M"] + producto.tallas[2]["L"]} initial='1' onAdd={(c) => {
-                        setCount(c);
+                        const cantidad = cantidadElementos.innerHTML
+                        addItem(producto,cantidad)
+                        setCount(cantidad)
+                        console.log(isInCart(producto.id))
+
                     }} />
                     : 
                     <div style={{display: 'flex'}} >
-                        <p style={{color: 'green', textAlign: 'center', paddingRight: 4, marginTop: 'auto', marginBottom: 'auto'}} >{cantidadElementos.innerHTML} unidades agregadas al carrito </p>
+                        <p style={{color: 'green', textAlign: 'center', paddingRight: 4, marginTop: 'auto', marginBottom: 'auto'}} >Agregaste unidades al carrito </p>
                         <Link to={`/cart`}><button className="btn btn-primary px-3"><FontAwesomeIcon icon={faShoppingCart} /> Finalizar Compra</button></Link>
-                    </div>
-                    
+                    </div> 
+
                 }
                 <div className="d-flex pt-2">
                     <p className="text-dark font-weight-medium mb-0 mr-2">Compartir:</p>

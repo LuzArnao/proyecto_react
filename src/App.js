@@ -2,14 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app/style.css';
 import './app/style.min.css';
 import Router from './app/Router';
-import Provider from './app/CartContext';
+import CartContext from './app/CartContext';
 
 function App() {
   return (
     
-      <Provider>
+      <CartContext>
         <Router/>
-      </Provider>
+      </CartContext>
 
   );
 }
