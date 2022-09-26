@@ -41,7 +41,7 @@ const NavBar = () => {
         <div className="row align-items-center py-1 px-xl-5">
             <div className="col-lg-3 d-none d-lg-block">
                 <a href="/" className="text-decoration-none">
-                    <h1 className="m-0 display-5 font-weight-semi-bold"><span className="text-primary font-weight-bold border px-3 mr-1">Trunk</span>OfSex</h1>
+                <Link style={{ textDecoration: 'none' }} to='/'><h1 className="m-0 display-5 font-weight-semi-bold"><span className="text-primary font-weight-bold border px-3 mr-1">Trunk</span>OfSex</h1></Link>  
                 </a>
             </div>
             <div className="col-lg-6 col-6 text-center">

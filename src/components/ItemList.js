@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Item from './Item';
 import { getProducts } from "../app/Funciones";
-
+import loadingLogo from "../assets/loading.svg"
+import { getItems } from '../app/api';
 
 const ItemList = () => {
   const descuento = 0.80
-  const [ productos, setProductos ] = useState([]);
+  const [ productos, setProductos ] = useState();
+
   useEffect(() => {
-    setTimeout(() => {
-
-      getProducts().then(res => setProductos(res))
-
-    },2000)
-      ;
+      getItems().then(res => setProductos(res))
   },[])
 
   return (
     
-    productos.map(producto => 
+    !productos?<div style={{textAlign: 'center'}}><img alt="" src={loadingLogo}/></div> :
+     productos.map(producto => 
 
        <Item key={producto.id} producto={producto} descuento={descuento}/>  
 

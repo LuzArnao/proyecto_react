@@ -6,6 +6,7 @@ import { faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-ico
 const ItemCount = ( { stock, initial, onAdd } ) => {
     
     const [contador, setContador] = useState(initial)
+    
   return (
 
     <div className="d-flex align-items-center">

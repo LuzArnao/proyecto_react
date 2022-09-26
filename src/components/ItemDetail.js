@@ -10,7 +10,6 @@ const ItemDetail = ( { producto, descuento } ) => {
     
     const { items, addItem, removeItem, clear, isInCart } = useContext(AppContext);
     const [count,setCount] = useState(0);
-    const cantidadElementos = document.getElementById('cantidadElementos');
 
     function formatNumber(valor) {
         return valor.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -92,11 +91,12 @@ const ItemDetail = ( { producto, descuento } ) => {
                     
                     isInCart(producto.id) < 1 ?
                     
-                    <ItemCount stock={producto.tallas[0]["S"] + producto.tallas[1]["M"] + producto.tallas[2]["L"]} initial='1' onAdd={(c) => {
-                        const cantidad = cantidadElementos.innerHTML
-                        addItem(producto,cantidad)
-                        setCount(cantidad)
-                        console.log(isInCart(producto.id))
+                    <ItemCount stock={producto.tallas["S"] + producto.tallas["M"] + producto.tallas["L"]} initial='1' onAdd={(c) => {
+                        
+                            const cantidadElementos = document.getElementById('cantidadElementos');
+                            const cantidad = cantidadElementos.innerHTML
+                            addItem(producto,cantidad)
+                            setCount(cantidad)
 
                     }} />
                     : 
