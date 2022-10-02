@@ -33,7 +33,7 @@ const ItemListContainer = ({color}) => {
 
           <div className="col-lg-10 col-md-12">
               <div className="mostrarProductos row pb-3">
-                  <div className="col-12 pb-1">
+                  {/* <div className="col-12 pb-1">
                       <div className="d-flex align-items-center justify-content-between mb-4">
                           <form action="">
                               <div className="input-group">
@@ -46,7 +46,7 @@ const ItemListContainer = ({color}) => {
                               </div>
                           </form>
                       </div>
-                  </div>
+                  </div> */}
                 <ItemList color={color} />
               </div>
             </div> 

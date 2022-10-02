@@ -8,6 +8,14 @@ export const createItem = async(obj) => {
     return data.id;
 }
 
+// CREATE ORDER
+
+export const createOrder = async(comprador, fecha, items, total) => {
+    const colRef = collection(db, 'ordenes');
+    const data = await addDoc(colRef, {comprador, fecha, items, total});
+    return data.id;
+}
+
 // UPDATE
 export const updateItem = async (id, obj) => {
     const colRef = collection(db, 'items');

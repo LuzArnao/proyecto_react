@@ -10,8 +10,6 @@ const Carrito = () => {
     const { items, removeItem } = useContext(AppContext);
 
     const costoTotal = items.reduce((total, currentValue) => total = total + currentValue.precio*currentValue.cantidad,0);
-    
-    console.log(items['length'])
 
   return (
     <div className="container-fluid pt-5">
@@ -73,12 +71,12 @@ const Carrito = () => {
                     </div>
                     <div className="card-footer border-secondary bg-transparent">
                         <div className="d-flex justify-content-between mt-2">
-                            <h5 className="font-weight-bold">Total</h5>
+                            <h5 className="font-weight-bold">Total + Impuestos</h5>
                             <h5 className="font-weight-bold">$ {
                                 items['length'] === 0 ? 0 : formatNumber(costoTotal+1000)
                             }</h5>
                         </div>
-                        <button className="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                        <Link to={`/checkout`}><button className="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></Link>
                     </div>
                 </div>
             </div>
