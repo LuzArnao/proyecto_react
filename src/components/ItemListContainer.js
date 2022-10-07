@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ItemList from './ItemList';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ItemListContainer = ({color}) => {
 
-  const [ nombre, setNombre ] = useState(false);
   const categoria = ['Amarillo', 'Negro', 'Rosa', 'Rojo', 'Blanco']
+
+  const navigate = useNavigate();
+
+    const pulsado = (ruta) => {
+        navigate(process.env.PUBLIC_URL+ruta);
+    }
 
   return (
     
@@ -18,14 +21,36 @@ const ItemListContainer = ({color}) => {
 
               {/* <!-- Color Start --> */}
               <div className="border-bottom mb-4 pb-4">
-                  <h5 className="font-weight-semi-bold mb-4">Categorias</h5>
-                    <ul>
-                        <li style={{listStyle: 'none'}} ><Link style={{ textDecoration: 'none' }} to={`/`}>Todos</Link></li>
-                        <li style={{listStyle: 'none'}} ><Link style={{ textDecoration: 'none' }} to={`/category/${categoria[0]}`}>Amarillo</Link></li>
-                        <li style={{listStyle: 'none'}} ><Link style={{ textDecoration: 'none' }} to={`/category/${categoria[1]}`}>Negro</Link></li>
-                        <li style={{listStyle: 'none'}} ><Link style={{ textDecoration: 'none' }} to={`/category/${categoria[2]}`}>Rosa</Link></li>
-                        <li style={{listStyle: 'none'}} ><Link style={{ textDecoration: 'none' }} to={`/category/${categoria[3]}`}>Rojo</Link></li>
-                    </ul>
+
+              <div className="card-header border-0">
+                        <h4 className="font-weight-semi-bold m-0">Categorias</h4>
+                    </div>
+                    <div className="card-body">
+                        <div className="form-group">
+                            <div className="custom-control custom-radio">
+                                <input type="radio" className="custom-control-input" name="categorias" id="todos" onClick={() => pulsado(`/`)}></input>
+                                <label className="custom-control-label" htmlFor="todos">Todos</label>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="custom-control custom-radio">
+                                <input type="radio" className="custom-control-input" name="categorias" id="amarillo" onClick={() => pulsado(`/category/${categoria[0]}`)}></input>
+                                <label className="custom-control-label" htmlFor="amarillo">Amarillo</label>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="custom-control custom-radio">
+                                <input type="radio" className="custom-control-input" name="categorias" id="rosa" onClick={() => pulsado(`/category/${categoria[2]}`)}></input>
+                                <label className="custom-control-label" htmlFor="rosa">Rosa</label>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="custom-control custom-radio">
+                                <input type="radio" className="custom-control-input" name="categorias" id="rojo" onClick={() => pulsado(`/category/${categoria[3]}`)}></input>
+                                <label className="custom-control-label" htmlFor="rojo">Rojo</label>
+                            </div>
+                        </div>
+                    </div>
               </div>
           </div>
 
@@ -33,20 +58,6 @@ const ItemListContainer = ({color}) => {
 
           <div className="col-lg-10 col-md-12">
               <div className="mostrarProductos row pb-3">
-                  {/* <div className="col-12 pb-1">
-                      <div className="d-flex align-items-center justify-content-between mb-4">
-                          <form action="">
-                              <div className="input-group">
-                                  <input id="buscaNombre" type="text" className="form-control" placeholder="Buscar por nombre" onChange={e => setNombre(e.target.value)}></input>
-                                  <div className="input-group-append">
-                                      <span className="input-group-text bg-transparent text-primary">
-                                      <FontAwesomeIcon icon={faSearch} />
-                                      </span>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div> */}
                 <ItemList color={color} />
               </div>
             </div> 

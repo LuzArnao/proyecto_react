@@ -40,8 +40,9 @@ const Checkouts = () => {
                 footer: '<a href="/">Volver al Inicio</a>'
                 }
             )
+            clear()
         })
-        clear()
+        
     }
 
     
@@ -52,7 +53,7 @@ const Checkouts = () => {
     <div style={{display: 'flex', justifyContent: 'space-around'}}>
     <Link to={`/`}><button className="btn btn-block btn-primary my-3 py-3">Ir a Comprar</button></Link></div></div> :
 
-    <div className="container-fluid pt-5">
+    <div className="container-fluid pt-3">
         <div className="row px-xl-5">
             <div className="col-lg-8">
                 <div className="mb-4">
@@ -102,7 +103,7 @@ const Checkouts = () => {
                 </div>
             </div>
             <div className="col-lg-4">
-                <div className="card border-secondary mb-5">
+                <div className="card border-secondary mb-4">
                     <div className="card-header bg-secondary border-0">
                         <h4 className="font-weight-semi-bold m-0">Total a Pagar</h4>
                     </div>
@@ -120,7 +121,7 @@ const Checkouts = () => {
                         <hr className="mt-0"></hr>
                         <div className="d-flex justify-content-between mb-3 pt-1">
                             <h6 className="font-weight-medium">Subtotal</h6>
-                            <h6 className="font-weight-medium">$ {formatNumber(costoTotal)}</h6>
+                            <h6 className="font-weight-medium">$ {formatNumber(costoTotalLibre)}</h6>
                         </div>
                         <div className="d-flex justify-content-between">
                             <h6 className="font-weight-medium">Envio</h6>
@@ -128,19 +129,19 @@ const Checkouts = () => {
                         </div>
                         <div className="d-flex justify-content-between">
                             <h6 className="font-weight-medium">Impuestos</h6>
-                            <h6 className="font-weight-medium">$ {formatNumber(costoTotal)*0.15}</h6>
+                            <h6 className="font-weight-medium">$ {formatNumber(costoTotalLibre*impuestos)}</h6>
                         </div>
                     </div>
                     <div className="card-footer border-secondary bg-transparent">
                         <div className="d-flex justify-content-between mt-2">
                             <h5 className="font-weight-bold">Total</h5>
-                            <h5 className="font-weight-bold">$ {formatNumber((costoTotal+1000)*1.15)}</h5>
+                            <h5 className="font-weight-bold">$ {formatNumber(costoTotal)}</h5>
                         </div>
                     </div>
                 </div>
                 <div className="card border-secondary mb-5">
                     <div className="card-footer border-secondary bg-transparent">
-                        <button className="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" onClick={ejecutarCompra}>Pagar</button>
+                        <button className="btn btn-lg btn-block btn-primary font-weight-bold my-1 py-3" onClick={ejecutarCompra}>Pagar</button>
                     </div>
                 </div>
             </div>

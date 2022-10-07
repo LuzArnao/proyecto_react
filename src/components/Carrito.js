@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 const Carrito = () => {
 
     const { items, removeItem } = useContext(AppContext);
-
     const costoTotal = items.reduce((total, currentValue) => total = total + currentValue.precio*currentValue.cantidad,0);
 
   return (
@@ -29,9 +28,9 @@ const Carrito = () => {
                         {
 
                             items['length'] === 0 ? <tr id='compraVacia'>Debes Agregar Elementos Al Carrito</tr> :
-                            items.map(item => 
+                            items.map(item =>  
                                 <tr key={item.id}>
-                                    <td className="align-middle"><div className="align-middle" style={{display: 'flex', justifyContent: 'space-evenly'}}><img src={item.imagen} alt="" style={{width: 50}}></img>{item.nombre}</div></td>
+                                    <td className="align-middle"><div className="align-middle" style={{display: 'flex', justifyContent: 'space-evenly'}}><img src={item.imagen} alt="" style={{width: 50}}></img><Link style={{textAlign: 'center', margin: 'auto'}} to={`/item/${item.id}`}>{item.nombre}</Link></div></td>
                                     <td className="align-middle">$ {formatNumber(item.precio)}</td>
                                     <td className="align-middle">{item.cantidad}</td>
                                     <td className="align-middle">$ {formatNumber(item.precio*item.cantidad)}</td>
@@ -71,7 +70,7 @@ const Carrito = () => {
                     </div>
                     <div className="card-footer border-secondary bg-transparent">
                         <div className="d-flex justify-content-between mt-2">
-                            <h5 className="font-weight-bold">Total + Impuestos</h5>
+                            <h5 className="font-weight-bold">Subtotal + Envio</h5>
                             <h5 className="font-weight-bold">$ {
                                 items['length'] === 0 ? 0 : formatNumber(costoTotal+1000)
                             }</h5>

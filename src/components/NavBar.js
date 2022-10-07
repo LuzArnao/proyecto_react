@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { AppContext } from '../app/CartContext' 
 
 const NavBar = () => {
-    const { items, addItem, removeItem, clear } = useContext(AppContext);
+    const { clear } = useContext(AppContext);
   return (
     <div className="container-fluid">
         <div className="row bg-secondary py-2 px-xl-5">
@@ -37,7 +37,7 @@ const NavBar = () => {
             </div>
             <div className="col-lg-3 col-6 text-right">
                 <a className="btn border">
-                <CartWidget/> 
+                    <CartWidget/> 
                 </a>
                 <a className="btn border" onClick={clear}>
                     <FontAwesomeIcon icon={faTrash}/>
