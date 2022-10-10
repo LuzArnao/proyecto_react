@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../app/CartContext'
-import { formatNumber } from '../app/Funciones' 
+import { formatNumber } from '../app/funciones' 
 import { createOrder } from '../app/api';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
